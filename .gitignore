@@ -1,0 +1,9 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/.vs
+/EduManAPI.sln
+/EduManAPI/bin
+/EduManAPI/obj
+/EduManAPI/EduManAPI.csproj
+/EduManAPI/EduManAPI.csproj.user

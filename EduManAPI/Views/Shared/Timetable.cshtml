@@ -1,0 +1,60 @@
+﻿@model EduManAPI.Models.TimetableViewVM;
+@{
+}
+<style>
+    table.maintbl {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th.maintbl, td.maintbl {
+        border-bottom: 2px solid black;
+        border-right: 2px solid;
+    }
+
+</style>
+<div>
+    <table style="width:100%" class="maintbl">
+        <thead>
+            <tr>
+                <th class="maintbl">
+                    Day
+                </th>
+                @foreach (var hn in Model.WHourList)
+                {
+                    <th class="maintbl">
+                       Hour-@hn
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var itm in Model.DayDataLst)
+            {
+                <tr>
+                    <td class="maintbl">
+                        <b> @itm.DayName</b>
+                    </td>
+                    @foreach (var hn in itm.HourDataLst)
+                    {
+                        <td class="maintbl" style="text-align:center">
+                            <table style="width:100%">
+                                <tr>
+                                    <td>
+                                        @hn.SubName
+                                    </td>                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        [@hn.TeacherName]
+                                    </td>
+                                </tr>
+                            </table>
+                             
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
