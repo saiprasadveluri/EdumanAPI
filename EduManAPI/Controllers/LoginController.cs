@@ -42,7 +42,7 @@ namespace EduManAPI.Controllers
                 uinfos = (from ui in context.UserInfos
                           where ui.UserID == li.UserID && ui.Password == li.Password
                           select new NewUserInfo()
-                          { ID = ui.ID, Name = ui.Name,IsSiteAdmin=ui.IsSiteAdmin }).FirstOrDefault();                
+                          { ID = ui.ID, Name = ui.Name,IsSiteAdmin=ui.IsSiteAdmin}).FirstOrDefault();                
                 if (uinfos != null)
                 {                    
                     if (li.GenToken == false)
@@ -68,6 +68,12 @@ namespace EduManAPI.Controllers
                             }
                             
                         }
+                        else if(uinfos.IsSiteAdmin==1)
+                        {
+                            uinfos.RoleString = AppRoleEnum.SITE_ADMIN.ToString();                            
+                            uinfos.RoleVal = (int)AppRoleEnum.SITE_ADMIN;
+                        }
+                        //Generate the Token and attach to output 
                         var JwtTokenString = GenerateJSONWebToken(uinfos.ID,uinfos.IsSiteAdmin, li.SelOrgId, _config, context);
                         uinfos.JwtTokenString= JwtTokenString;
                     }

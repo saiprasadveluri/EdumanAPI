@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\Vemuri\Vemuri\EduMan\Deploy\EduManAPI</_PublishTargetUrl>
-    <History>True|2024-01-10T14:12:31.5649717Z;True|2024-01-10T19:40:21.9513503+05:30;</History>
+    <History>True|2024-01-23T12:40:46.8931954Z;True|2024-01-23T16:50:14.5958037+05:30;True|2024-01-23T16:45:11.1448462+05:30;True|2024-01-23T16:44:22.0618663+05:30;True|2024-01-10T19:42:31.5649717+05:30;True|2024-01-10T19:40:21.9513503+05:30;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

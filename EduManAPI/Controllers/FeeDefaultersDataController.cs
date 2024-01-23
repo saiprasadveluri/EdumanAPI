@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using EduManAPI.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -31,7 +32,7 @@ namespace EduManAPI.Controllers
 
             var FSchoolLst = (from obj in context.FeeMasters
                              join hobj in context.FeeHeadMasters on obj.FHeadId equals hobj.FeeHeadId
-                             where hobj.OrgId == OrgId && hobj.FeeType == 1 && obj.TermNo<= TermNo
+                             where hobj.OrgId == OrgId && hobj.FeeType == (int)FeeFeeTypeEnum.SCHOOL_LEVEL && obj.TermNo<= TermNo
                               select new { obj,hobj,obj.Amount }).ToList();
 
             for (int n = 0; n < FSchoolLst.Count(); ++n)
@@ -74,7 +75,7 @@ namespace EduManAPI.Controllers
             {
                 var ClassLst = (from obj in context.FeeMasters
                                 join hobj in context.FeeHeadMasters on obj.FHeadId equals hobj.FeeHeadId
-                                where hobj.OrgId == OrgId && hobj.FeeType == 2 && obj.StnId ==MapLst[m].StdId && obj.TermNo <= TermNo
+                                where hobj.OrgId == OrgId && hobj.FeeType == (int)FeeFeeTypeEnum.CLASS_LEVEL && obj.StnId ==MapLst[m].StdId && obj.TermNo <= TermNo
                                 select new { obj, hobj, obj.Amount }).ToList();
 
                 for (int n = 0; n < ClassLst.Count(); ++n)
@@ -115,7 +116,7 @@ namespace EduManAPI.Controllers
             {
                 var StudentLevelLst = (from obj in context.FeeMasters
                                        join hobj in context.FeeHeadMasters on obj.FHeadId equals hobj.FeeHeadId
-                                       where hobj.OrgId == OrgId && hobj.FeeType == 3 && obj.MapId==MapLst[m].MapId && obj.TermNo <= TermNo
+                                       where hobj.OrgId == OrgId && hobj.FeeType == (int)FeeFeeTypeEnum.STUDENT_LEVEL && obj.MapId==MapLst[m].MapId && obj.TermNo <= TermNo
                                        select new { obj, hobj, obj.Amount }).ToList();
                 for (int n = 0; n < StudentLevelLst.Count(); ++n)
                 {
